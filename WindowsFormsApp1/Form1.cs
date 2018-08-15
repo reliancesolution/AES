@@ -34,14 +34,14 @@ namespace WindowsFormsApp1
                 conn.Open();
                 //Console.WriteLine("MySQL version : {0}", conn.ServerVersion);
                
-                MessageBox.Show("connection success");
+                //MessageBox.Show("connection success");
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error:", ex.ToString());
                 // MessageBox.Show("Error:", ex.ToString());
-                MessageBox.Show("connection failed." + ex.ToString());
+                MessageBox.Show("Database Connection failed." + ex.ToString());
 
             }
             finally
@@ -91,11 +91,12 @@ namespace WindowsFormsApp1
                         Session.Username = dataTable.Rows[0][1].ToString();
                         Session.FullName = dataTable.Rows[0][2].ToString();
                         Session.Type = dataTable.Rows[0][3].ToString();
-
-
-
+                        
                         this.Hide();
-
+                        
+                        frm_dashboard showDashboard = new frm_dashboard();
+                        showDashboard.Show();
+                        
                     }
                     else if (dataTable.Rows[0][0].ToString() == "coordinator")
                     {
@@ -137,7 +138,34 @@ namespace WindowsFormsApp1
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            checkCredentials(txt_username.Text, txt_password.Text);
+
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+
+                checkCredentials(txt_username.Text, txt_password.Text);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error:", ex.ToString());
+                // MessageBox.Show("Error:", ex.ToString());
+                MessageBox.Show("Database Connection failed." + ex.ToString());
+
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+
+
+            
         }
     }
 }
