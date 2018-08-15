@@ -13,6 +13,13 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        private string cs = @"server=localhost;userid=root;
+            password=;database=db_aes;SslMode=none";
+        private MySqlCommand query;
+        private MySqlDataAdapter adapt;
+        private DataTable dataTable = new DataTable();
+        private MySqlConnection conn = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -20,12 +27,7 @@ namespace WindowsFormsApp1
         }
 
         public void testConnection() {
-
-            string cs = @"server=localhost;userid=root;
-            password=;database=db_aes;SslMode=none";
-
-            MySqlConnection conn = null;
-
+           
             try
             {
                 conn = new MySqlConnection(cs);
@@ -54,12 +56,7 @@ namespace WindowsFormsApp1
         }
 
         public void checkCredentials(string username, string password)
-        {
-
-            string cs = @"server=localhost;userid=root;
-            password=;database=db_aes;SslMode=none";
-
-            MySqlConnection conn = null;
+        {            
 
             try
             {
@@ -67,16 +64,44 @@ namespace WindowsFormsApp1
                 conn.Open();
                 //Console.WriteLine("MySQL version : {0}", conn.ServerVersion);
 
-                MySqlCommand query = conn.CreateCommand();
+                query = conn.CreateCommand();
                 query.CommandText = "select count(*) from account_table where username= '" + username + "' and password='" + password + "'";
-                MySqlDataAdapter adapt = new MySqlDataAdapter(query);
-                DataTable dataTable = new DataTable();
+                adapt = new MySqlDataAdapter(query);
+                dataTable = new DataTable();
                 adapt.Fill(dataTable);
-
-                if(dataTable.Rows[0][0].ToString() == "1")
+                
+                if (dataTable.Rows[0][0].ToString() == "1")
                 {
-                    MessageBox.Show("Login Success!");
-                   
+                    query.CommandText = "select type from account_table where username= '" + username + "' and password='" + password + "'";
+                    adapt = new MySqlDataAdapter(query);
+                    dataTable = new DataTable();
+                    adapt.Fill(dataTable);
+
+                    
+                    
+                    if (dataTable.Rows[0][0].ToString() == "admin")
+                    {
+                        //create session
+                        query.CommandText = "select * from account_table where username= '" + username + "' and password='" + password + "'";
+                        adapt = new MySqlDataAdapter(query);
+                        dataTable = new DataTable();
+                        adapt.Fill(dataTable);
+
+                        Session.Id = Convert.ToInt32(dataTable.Rows[0][0].ToString());
+                        Session.Username = dataTable.Rows[0][1].ToString();
+                        Session.FullName = dataTable.Rows[0][2].ToString();
+                        Session.Type = dataTable.Rows[0][3].ToString();
+
+
+
+                        this.Hide();
+
+                    }
+                    else if (dataTable.Rows[0][0].ToString() == "coordinator")
+                    {
+                        //create session
+                        MessageBox.Show("coordinator");
+                    }
 
                 }
                 else if (dataTable.Rows[0][0].ToString() == "2")
