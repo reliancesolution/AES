@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("test");
+           
         }
     }
 }
