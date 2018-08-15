@@ -59,7 +59,7 @@
             this.btn_login.Location = new System.Drawing.Point(302, 128);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(75, 23);
-            this.btn_login.TabIndex = 2;
+            this.btn_login.TabIndex = 3;
             this.btn_login.Text = "Login";
             this.btn_login.UseVisualStyleBackColor = true;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
@@ -68,8 +68,9 @@
             // 
             this.txt_password.Location = new System.Drawing.Point(133, 102);
             this.txt_password.Name = "txt_password";
+            this.txt_password.PasswordChar = '*';
             this.txt_password.Size = new System.Drawing.Size(244, 20);
-            this.txt_password.TabIndex = 4;
+            this.txt_password.TabIndex = 2;
             // 
             // label2
             // 
@@ -114,6 +115,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LOGIN FORM";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
