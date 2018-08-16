@@ -54,12 +54,25 @@
             this.tb_reportGeneration = new System.Windows.Forms.TabPage();
             this.dt_logs = new System.Windows.Forms.DataGridView();
             this.btn_logRefresh = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tb_admin.SuspendLayout();
             this.tb_manageAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_accounts)).BeginInit();
+            this.tb_manageDocuments.SuspendLayout();
             this.tb_userLogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_logs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_logout
@@ -290,6 +303,17 @@
             // 
             // tb_manageDocuments
             // 
+            this.tb_manageDocuments.Controls.Add(this.button3);
+            this.tb_manageDocuments.Controls.Add(this.button4);
+            this.tb_manageDocuments.Controls.Add(this.button2);
+            this.tb_manageDocuments.Controls.Add(this.button1);
+            this.tb_manageDocuments.Controls.Add(this.textBox2);
+            this.tb_manageDocuments.Controls.Add(this.label7);
+            this.tb_manageDocuments.Controls.Add(this.label6);
+            this.tb_manageDocuments.Controls.Add(this.comboBox1);
+            this.tb_manageDocuments.Controls.Add(this.textBox1);
+            this.tb_manageDocuments.Controls.Add(this.label5);
+            this.tb_manageDocuments.Controls.Add(this.dataGridView1);
             this.tb_manageDocuments.Location = new System.Drawing.Point(4, 22);
             this.tb_manageDocuments.Name = "tb_manageDocuments";
             this.tb_manageDocuments.Padding = new System.Windows.Forms.Padding(3);
@@ -320,7 +344,6 @@
             // 
             // dt_logs
             // 
-            this.dt_logs.AllowUserToResizeColumns = false;
             this.dt_logs.AllowUserToResizeRows = false;
             this.dt_logs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dt_logs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -345,6 +368,104 @@
             this.btn_logRefresh.UseVisualStyleBackColor = true;
             this.btn_logRefresh.Click += new System.EventHandler(this.btn_logRefresh_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 45);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(499, 328);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(203, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "SEARCH :";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(257, 21);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(152, 20);
+            this.textBox1.TabIndex = 2;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(596, 48);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(152, 21);
+            this.comboBox1.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(526, 51);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "AREA NO. :";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(596, 84);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(338, 289);
+            this.textBox2.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(508, 87);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "DESCRIPTION :";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(415, 18);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 24);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "SEARCH";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(754, 45);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(87, 24);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "DELETE";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(847, 45);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(87, 24);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "SAVE";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(847, 18);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(87, 24);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "EDIT";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // frm_dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,8 +483,11 @@
             this.tb_manageAccount.ResumeLayout(false);
             this.tb_manageAccount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_accounts)).EndInit();
+            this.tb_manageDocuments.ResumeLayout(false);
+            this.tb_manageDocuments.PerformLayout();
             this.tb_userLogs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dt_logs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -395,5 +519,16 @@
         private System.Windows.Forms.Button btn_regUserSave;
         private System.Windows.Forms.DataGridView dt_logs;
         private System.Windows.Forms.Button btn_logRefresh;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

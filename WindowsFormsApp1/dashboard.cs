@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             dbCommand("", "viewUser", "");
-            dbCommand("", "showLogs", "select * from log_table");
+            dbCommand("", "showLogs", "select username as 'Username', full_name as 'Full Name', description as 'Description' from log_table");
         }
         private void clearRegTextBox() {
             txt_regUsername.Text = "";
@@ -151,7 +151,6 @@ namespace WindowsFormsApp1
                     dt_logs.DataSource = setData.Tables[0].DefaultView;
                 }
 
-
             }
             catch (Exception ex)
             {
@@ -216,6 +215,7 @@ namespace WindowsFormsApp1
             dbCommand("","deleteUser","delete from account_table where id='"+ userId +"'");
             dbCommand("", "viewUser", "");
             btn_regDelete.Enabled = false;
+            clearRegTextBox();
         }
 
         private void frm_dashboard_Load(object sender, EventArgs e)
@@ -285,7 +285,7 @@ namespace WindowsFormsApp1
 
         private void btn_logRefresh_Click(object sender, EventArgs e)
         {
-            dbCommand("", "showLogs", "select * from log_table");
+            dbCommand("", "showLogs", "select username as 'Username', full_name as 'Full Name', description as 'Description' from log_table");
         }
 
         //private void dg_accounts_SelectionChanged(object sender, EventArgs e)
