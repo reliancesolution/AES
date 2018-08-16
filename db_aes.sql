@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2018 at 04:37 PM
+-- Generation Time: Aug 16, 2018 at 01:19 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.0.28
 
@@ -42,8 +42,31 @@ CREATE TABLE `account_table` (
 
 INSERT INTO `account_table` (`id`, `username`, `password`, `full_name`, `type`) VALUES
 (1, 'admin', 'admin', 'admin_full_name', 'admin'),
-(2, 'coordinator', 'coordinator', 'coordinator_fullname', 'coordinator'),
-(16, 'sm', 'smnorth', 'name', 'admin');
+(44, 'coordinator', 'adad', 'coordinator_fullname', 'admin'),
+(48, 'www', 'www', 'www', 'admin'),
+(49, 'RG', 'admin', 'IBARRA', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log_table`
+--
+
+CREATE TABLE `log_table` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `log_table`
+--
+
+INSERT INTO `log_table` (`id`, `username`, `full_name`, `description`) VALUES
+(1, 'admin', 'admin', 'unknown'),
+(2, 'admin', 'admin', 'admin added new account.'),
+(3, 'admin', 'admin', 'admin has been successfully updated an account.');
 
 --
 -- Indexes for dumped tables
@@ -56,6 +79,12 @@ ALTER TABLE `account_table`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `log_table`
+--
+ALTER TABLE `log_table`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -63,7 +92,13 @@ ALTER TABLE `account_table`
 -- AUTO_INCREMENT for table `account_table`
 --
 ALTER TABLE `account_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT for table `log_table`
+--
+ALTER TABLE `log_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
