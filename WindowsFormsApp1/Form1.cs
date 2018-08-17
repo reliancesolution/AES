@@ -120,7 +120,7 @@ namespace WindowsFormsApp1
             {
                 Console.WriteLine("Error:", ex.ToString());
                 // MessageBox.Show("Error:", ex.ToString());
-                MessageBox.Show("connection failed." + ex.ToString());
+                MessageBox.Show("connection failed.");
 
             }
             finally

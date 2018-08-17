@@ -21,15 +21,18 @@ namespace WindowsFormsApp1
         private MySqlConnection conn = null;
         DataSet setData;
 
+        docuForm df;
+
 
         string userId;
-        string log_message;
+       
 
         public frm_dashboard()
         {
             InitializeComponent();
             dbCommand("", "viewUser", "");
             dbCommand("", "showLogs", "select username as 'Username', full_name as 'Full Name', description as 'Description' from log_table");
+            dbCommand("", "showDocu", "select id as 'ID', title as 'Title' from document_table");
         }
         private void clearRegTextBox() {
             txt_regUsername.Text = "";
@@ -65,7 +68,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void dbCommand(string module, string specialAction, string qry) {
+        public void dbCommand(string module, string specialAction, string qry) {
             try
             {
                 conn = new MySqlConnection(cs);
@@ -149,8 +152,75 @@ namespace WindowsFormsApp1
                     setData = new DataSet();
                     adapt.Fill(setData);
                     dt_logs.DataSource = setData.Tables[0].DefaultView;
-                }
+                }                
+                else if (module == "" && specialAction == "showDocu")
+                {
+                    adapt = new MySqlDataAdapter(query);
+                    setData = new DataSet();
+                    adapt.Fill(setData);
+                    dt_docu.DataSource = setData.Tables[0].DefaultView;
+                }                
+                else if (module == "" && specialAction == "createDocuTitle")
+                {
+                    query.ExecuteNonQuery();
+                }                
+                else if (module == "" && specialAction == "getDocuId")
+                {
+                    adapt = new MySqlDataAdapter(query);
+                    dataTable = new DataTable();
+                    adapt.Fill(dataTable);
 
+                    document.Id = Convert.ToInt32(dataTable.Rows[0][0].ToString());
+                    document.Title = txt_titleDocu.Text;
+                }
+                else if (module == "" && specialAction == "addDocu")
+                {
+                    query.ExecuteNonQuery();
+                }                
+                else if (module == "" && specialAction == "showArea")
+                {
+                    
+                        adapt = new MySqlDataAdapter(query);
+                        setData = new DataSet();
+                        adapt.Fill(setData);
+                        df = new docuForm();
+                        df.docuFormGet(setData.Tables[0].DefaultView);
+                        //dg.DataSource = setData.Tables[0].DefaultView;
+                        
+                        df.Show();
+                    
+                }
+                else if (module == "" && specialAction == "getArea")
+                {
+
+                    adapt = new MySqlDataAdapter(query);
+                    setData = new DataSet();
+                    adapt.Fill(setData);
+                    df = new docuForm();
+                    df.docuFormGet(setData.Tables[0].DefaultView);
+                    //dg.DataSource = setData.Tables[0].DefaultView;
+
+                    df.Hide();
+
+                }
+                else if (module == "" && specialAction == "deleteArea")
+                {
+
+                    query.ExecuteNonQuery();
+
+                }
+                else if (module == "" && specialAction == "deleteDocu")
+                {
+                    query.ExecuteNonQuery();
+                }
+                else if (module == "" && specialAction == "deleteArea")
+                {
+                    query.ExecuteNonQuery();
+                }
+                else if (module == "" && specialAction == "updateArea")
+                {
+                    query.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
@@ -286,6 +356,98 @@ namespace WindowsFormsApp1
         private void btn_logRefresh_Click(object sender, EventArgs e)
         {
             dbCommand("", "showLogs", "select username as 'Username', full_name as 'Full Name', description as 'Description' from log_table");
+        }
+
+        private void btn_refreshDocu_Click(object sender, EventArgs e)
+        {
+            dbCommand("", "showDocu", "select id as 'ID', title as 'Title' from document_table");
+        }
+
+        private void btnCreateDocu_Click(object sender, EventArgs e)
+        {
+            if (txt_titleDocu.Text != "")
+            {
+                dbCommand("", "createDocuTitle", "insert into document_table(title) values ('" + txt_titleDocu.Text + "')");
+                dbCommand("", "getDocuId", "select id from document_table where title ='" + txt_titleDocu.Text + "'");
+
+                txt_titleDocu.Text = "";
+                docuForm manageDocu = new docuForm();
+                manageDocu.Show();
+            }
+            else
+            {
+                MessageBox.Show("Fill all the blanks.");
+            }
+
+           
+        }
+
+        private void btnEditDocu_Click(object sender, EventArgs e)
+        {
+            
+
+            if (txt_titleDocu.Text != "")
+            {
+                foreach (DataGridViewRow row in dt_docu.SelectedRows)
+                {
+                    int docId;
+                    docId = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    document.Id = docId;
+                    document.Title = row.Cells[1].Value.ToString();
+
+                    //if (regType == "admin")
+                    //{
+                    // cmb_regType.SelectedIndex = 0;
+                    //}
+                    //else if (regType == "coordinator")
+                    //{
+                    //    cmb_regType.SelectedIndex = 1;
+                    //}
+
+                }
+                dbCommand("", "showArea", "select area_id as 'Area ID', area_no as 'Area No' ,area_desc as 'Area Description' from area_table where doc_id ='" + document.Id.ToString() + "'");
+                txt_titleDocu.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Fill all the blanks.");
+            }
+
+
+            
+            
+        }
+
+        private void dt_docu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewRow row in dt_docu.SelectedRows)
+            {
+                txt_titleDocu.Text = row.Cells[1].Value.ToString();
+            }
+        }
+
+        private void btn_deleteDocu_Click(object sender, EventArgs e)
+        {
+            if (txt_titleDocu.Text != "")
+            {
+                foreach (DataGridViewRow row in dt_docu.SelectedRows)
+                {
+                    int docId;
+                    docId = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    document.Id = docId;
+                    document.Title = row.Cells[1].Value.ToString();
+                }
+                dbCommand("", "deleteDocu", "delete from document_table where id='" + document.Id.ToString() + "'");
+                dbCommand("", "deleteArea", "delete from area_table where doc_id='" + document.Id.ToString() + "'");
+                dbCommand("", "showDocu", "select id as 'ID', title as 'Title' from document_table");
+
+                txt_titleDocu.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Fill all the blanks.");
+            }
+           
         }
 
         //private void dg_accounts_SelectionChanged(object sender, EventArgs e)

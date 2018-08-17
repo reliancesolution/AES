@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2018 at 04:45 PM
+-- Generation Time: Aug 17, 2018 at 02:58 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.0.28
 
@@ -58,6 +58,13 @@ CREATE TABLE `area_table` (
   `doc_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `area_table`
+--
+
+INSERT INTO `area_table` (`area_id`, `area_no`, `area_desc`, `doc_id`) VALUES
+(49, 'AREA 1', 'This are the parameters', '14');
+
 -- --------------------------------------------------------
 
 --
@@ -68,6 +75,13 @@ CREATE TABLE `document_table` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `document_table`
+--
+
+INSERT INTO `document_table` (`id`, `title`) VALUES
+(14, 'qweqweqwe');
 
 -- --------------------------------------------------------
 
@@ -139,13 +153,13 @@ ALTER TABLE `account_table`
 -- AUTO_INCREMENT for table `area_table`
 --
 ALTER TABLE `area_table`
-  MODIFY `area_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `area_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `document_table`
 --
 ALTER TABLE `document_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `log_table`

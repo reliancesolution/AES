@@ -50,29 +50,28 @@
             this.btn_regDelete = new System.Windows.Forms.Button();
             this.btn_regEdit = new System.Windows.Forms.Button();
             this.tb_manageDocuments = new System.Windows.Forms.TabPage();
-            this.tb_userLogs = new System.Windows.Forms.TabPage();
-            this.tb_reportGeneration = new System.Windows.Forms.TabPage();
-            this.dt_logs = new System.Windows.Forms.DataGridView();
-            this.btn_logRefresh = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txt_titleDocu = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnCreateDocu = new System.Windows.Forms.Button();
+            this.btn_refreshDocu = new System.Windows.Forms.Button();
+            this.btnEditDocu = new System.Windows.Forms.Button();
+            this.btn_deleteDocu = new System.Windows.Forms.Button();
+            this.btn_searchDocu = new System.Windows.Forms.Button();
+            this.txt_searchDocu = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.dt_docu = new System.Windows.Forms.DataGridView();
+            this.tb_userLogs = new System.Windows.Forms.TabPage();
+            this.btn_logRefresh = new System.Windows.Forms.Button();
+            this.dt_logs = new System.Windows.Forms.DataGridView();
+            this.tb_reportGeneration = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tb_admin.SuspendLayout();
             this.tb_manageAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_accounts)).BeginInit();
             this.tb_manageDocuments.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_docu)).BeginInit();
             this.tb_userLogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_logs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_logout
@@ -253,6 +252,7 @@
             // 
             // dg_accounts
             // 
+            this.dg_accounts.AllowUserToAddRows = false;
             this.dg_accounts.AllowUserToResizeColumns = false;
             this.dg_accounts.AllowUserToResizeRows = false;
             this.dg_accounts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -303,17 +303,16 @@
             // 
             // tb_manageDocuments
             // 
-            this.tb_manageDocuments.Controls.Add(this.button3);
-            this.tb_manageDocuments.Controls.Add(this.button4);
-            this.tb_manageDocuments.Controls.Add(this.button2);
-            this.tb_manageDocuments.Controls.Add(this.button1);
-            this.tb_manageDocuments.Controls.Add(this.textBox2);
-            this.tb_manageDocuments.Controls.Add(this.label7);
-            this.tb_manageDocuments.Controls.Add(this.label6);
-            this.tb_manageDocuments.Controls.Add(this.comboBox1);
-            this.tb_manageDocuments.Controls.Add(this.textBox1);
+            this.tb_manageDocuments.Controls.Add(this.txt_titleDocu);
+            this.tb_manageDocuments.Controls.Add(this.label8);
+            this.tb_manageDocuments.Controls.Add(this.btnCreateDocu);
+            this.tb_manageDocuments.Controls.Add(this.btn_refreshDocu);
+            this.tb_manageDocuments.Controls.Add(this.btnEditDocu);
+            this.tb_manageDocuments.Controls.Add(this.btn_deleteDocu);
+            this.tb_manageDocuments.Controls.Add(this.btn_searchDocu);
+            this.tb_manageDocuments.Controls.Add(this.txt_searchDocu);
             this.tb_manageDocuments.Controls.Add(this.label5);
-            this.tb_manageDocuments.Controls.Add(this.dataGridView1);
+            this.tb_manageDocuments.Controls.Add(this.dt_docu);
             this.tb_manageDocuments.Location = new System.Drawing.Point(4, 22);
             this.tb_manageDocuments.Name = "tb_manageDocuments";
             this.tb_manageDocuments.Padding = new System.Windows.Forms.Padding(3);
@@ -321,6 +320,107 @@
             this.tb_manageDocuments.TabIndex = 1;
             this.tb_manageDocuments.Text = "Documents";
             this.tb_manageDocuments.UseVisualStyleBackColor = true;
+            // 
+            // txt_titleDocu
+            // 
+            this.txt_titleDocu.Location = new System.Drawing.Point(656, 147);
+            this.txt_titleDocu.Name = "txt_titleDocu";
+            this.txt_titleDocu.Size = new System.Drawing.Size(180, 20);
+            this.txt_titleDocu.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(611, 151);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "TITLE :";
+            // 
+            // btnCreateDocu
+            // 
+            this.btnCreateDocu.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateDocu.Location = new System.Drawing.Point(656, 173);
+            this.btnCreateDocu.Name = "btnCreateDocu";
+            this.btnCreateDocu.Size = new System.Drawing.Size(87, 24);
+            this.btnCreateDocu.TabIndex = 15;
+            this.btnCreateDocu.Text = "CREATE";
+            this.btnCreateDocu.UseVisualStyleBackColor = true;
+            this.btnCreateDocu.Click += new System.EventHandler(this.btnCreateDocu_Click);
+            // 
+            // btn_refreshDocu
+            // 
+            this.btn_refreshDocu.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_refreshDocu.Location = new System.Drawing.Point(3, 18);
+            this.btn_refreshDocu.Name = "btn_refreshDocu";
+            this.btn_refreshDocu.Size = new System.Drawing.Size(119, 24);
+            this.btn_refreshDocu.TabIndex = 14;
+            this.btn_refreshDocu.Text = "REFRESH";
+            this.btn_refreshDocu.UseVisualStyleBackColor = true;
+            this.btn_refreshDocu.Click += new System.EventHandler(this.btn_refreshDocu_Click);
+            // 
+            // btnEditDocu
+            // 
+            this.btnEditDocu.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditDocu.Location = new System.Drawing.Point(749, 173);
+            this.btnEditDocu.Name = "btnEditDocu";
+            this.btnEditDocu.Size = new System.Drawing.Size(87, 24);
+            this.btnEditDocu.TabIndex = 12;
+            this.btnEditDocu.Text = "EDIT";
+            this.btnEditDocu.UseVisualStyleBackColor = true;
+            this.btnEditDocu.Click += new System.EventHandler(this.btnEditDocu_Click);
+            // 
+            // btn_deleteDocu
+            // 
+            this.btn_deleteDocu.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_deleteDocu.Location = new System.Drawing.Point(656, 200);
+            this.btn_deleteDocu.Name = "btn_deleteDocu";
+            this.btn_deleteDocu.Size = new System.Drawing.Size(180, 24);
+            this.btn_deleteDocu.TabIndex = 11;
+            this.btn_deleteDocu.Text = "DELETE";
+            this.btn_deleteDocu.UseVisualStyleBackColor = true;
+            this.btn_deleteDocu.Click += new System.EventHandler(this.btn_deleteDocu_Click);
+            // 
+            // btn_searchDocu
+            // 
+            this.btn_searchDocu.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_searchDocu.Location = new System.Drawing.Point(415, 18);
+            this.btn_searchDocu.Name = "btn_searchDocu";
+            this.btn_searchDocu.Size = new System.Drawing.Size(87, 24);
+            this.btn_searchDocu.TabIndex = 10;
+            this.btn_searchDocu.Text = "SEARCH";
+            this.btn_searchDocu.UseVisualStyleBackColor = true;
+            // 
+            // txt_searchDocu
+            // 
+            this.txt_searchDocu.Location = new System.Drawing.Point(257, 21);
+            this.txt_searchDocu.Name = "txt_searchDocu";
+            this.txt_searchDocu.Size = new System.Drawing.Size(152, 20);
+            this.txt_searchDocu.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(203, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "SEARCH :";
+            // 
+            // dt_docu
+            // 
+            this.dt_docu.AllowUserToAddRows = false;
+            this.dt_docu.AllowUserToResizeRows = false;
+            this.dt_docu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dt_docu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_docu.Location = new System.Drawing.Point(3, 45);
+            this.dt_docu.MultiSelect = false;
+            this.dt_docu.Name = "dt_docu";
+            this.dt_docu.ReadOnly = true;
+            this.dt_docu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dt_docu.Size = new System.Drawing.Size(499, 328);
+            this.dt_docu.TabIndex = 0;
+            this.dt_docu.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dt_docu_CellMouseClick);
             // 
             // tb_userLogs
             // 
@@ -333,17 +433,20 @@
             this.tb_userLogs.Text = "User Logs";
             this.tb_userLogs.UseVisualStyleBackColor = true;
             // 
-            // tb_reportGeneration
+            // btn_logRefresh
             // 
-            this.tb_reportGeneration.Location = new System.Drawing.Point(4, 22);
-            this.tb_reportGeneration.Name = "tb_reportGeneration";
-            this.tb_reportGeneration.Size = new System.Drawing.Size(940, 379);
-            this.tb_reportGeneration.TabIndex = 3;
-            this.tb_reportGeneration.Text = "Report Generation";
-            this.tb_reportGeneration.UseVisualStyleBackColor = true;
+            this.btn_logRefresh.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_logRefresh.Location = new System.Drawing.Point(733, 336);
+            this.btn_logRefresh.Name = "btn_logRefresh";
+            this.btn_logRefresh.Size = new System.Drawing.Size(204, 24);
+            this.btn_logRefresh.TabIndex = 10;
+            this.btn_logRefresh.Text = "REFRESH";
+            this.btn_logRefresh.UseVisualStyleBackColor = true;
+            this.btn_logRefresh.Click += new System.EventHandler(this.btn_logRefresh_Click);
             // 
             // dt_logs
             // 
+            this.dt_logs.AllowUserToAddRows = false;
             this.dt_logs.AllowUserToResizeRows = false;
             this.dt_logs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dt_logs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -357,114 +460,14 @@
             this.dt_logs.Size = new System.Drawing.Size(934, 317);
             this.dt_logs.TabIndex = 0;
             // 
-            // btn_logRefresh
+            // tb_reportGeneration
             // 
-            this.btn_logRefresh.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_logRefresh.Location = new System.Drawing.Point(733, 336);
-            this.btn_logRefresh.Name = "btn_logRefresh";
-            this.btn_logRefresh.Size = new System.Drawing.Size(204, 24);
-            this.btn_logRefresh.TabIndex = 10;
-            this.btn_logRefresh.Text = "REFRESH";
-            this.btn_logRefresh.UseVisualStyleBackColor = true;
-            this.btn_logRefresh.Click += new System.EventHandler(this.btn_logRefresh_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 45);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(499, 328);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(203, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "SEARCH :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(257, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(152, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(596, 48);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(152, 21);
-            this.comboBox1.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(526, 51);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "AREA NO. :";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(596, 84);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(338, 289);
-            this.textBox2.TabIndex = 6;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(508, 87);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "DESCRIPTION :";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(415, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 24);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "SEARCH";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(754, 45);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 24);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "DELETE";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(847, 45);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 24);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "SAVE";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(847, 18);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 24);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "EDIT";
-            this.button4.UseVisualStyleBackColor = true;
+            this.tb_reportGeneration.Location = new System.Drawing.Point(4, 22);
+            this.tb_reportGeneration.Name = "tb_reportGeneration";
+            this.tb_reportGeneration.Size = new System.Drawing.Size(940, 379);
+            this.tb_reportGeneration.TabIndex = 3;
+            this.tb_reportGeneration.Text = "Report Generation";
+            this.tb_reportGeneration.UseVisualStyleBackColor = true;
             // 
             // frm_dashboard
             // 
@@ -485,9 +488,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dg_accounts)).EndInit();
             this.tb_manageDocuments.ResumeLayout(false);
             this.tb_manageDocuments.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_docu)).EndInit();
             this.tb_userLogs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dt_logs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -519,16 +522,15 @@
         private System.Windows.Forms.Button btn_regUserSave;
         private System.Windows.Forms.DataGridView dt_logs;
         private System.Windows.Forms.Button btn_logRefresh;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnEditDocu;
+        private System.Windows.Forms.Button btn_deleteDocu;
+        private System.Windows.Forms.Button btn_searchDocu;
+        private System.Windows.Forms.TextBox txt_searchDocu;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dt_docu;
+        private System.Windows.Forms.Button btn_refreshDocu;
+        private System.Windows.Forms.Button btnCreateDocu;
+        private System.Windows.Forms.TextBox txt_titleDocu;
+        private System.Windows.Forms.Label label8;
     }
 }
