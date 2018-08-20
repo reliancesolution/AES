@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+using System.Data.OleDb;
+
 namespace WindowsFormsApp1
 {
     public partial class frm_dashboard : Form
@@ -43,7 +45,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void dbCommandLogs(string message) {
+        public void dbCommandLogs(string message) {
 
             try
             {
@@ -221,6 +223,10 @@ namespace WindowsFormsApp1
                 {
                     query.ExecuteNonQuery();
                 }
+                else if (module == "" && specialAction == "importArea")
+                {
+                    query.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
@@ -292,8 +298,8 @@ namespace WindowsFormsApp1
         {
             btn_regDelete.Enabled = false;
             btn_regUserSave.Visible = false;
+            txtSaveExcelPath.Enabled = false;
 
-           
         }
 
         private void btn_regEdit_Click(object sender, EventArgs e)
@@ -332,6 +338,8 @@ namespace WindowsFormsApp1
                 {
                     dbCommand("", "updateUser", "update account_table set username = @username, full_name = @full_name, password = @password, type = @type where id= " + userIdInt + "");
                     dbCommand("", "viewUser", "");
+
+                    dbCommandLogs(Session.FullName.ToString() + " added new account.");
                 }
                 else
                 {
@@ -407,6 +415,8 @@ namespace WindowsFormsApp1
                 }
                 dbCommand("", "showArea", "select area_id as 'Area ID', area_no as 'Area No' ,area_desc as 'Area Description' from area_table where doc_id ='" + document.Id.ToString() + "'");
                 txt_titleDocu.Text = "";
+
+                
             }
             else
             {
@@ -448,6 +458,82 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Fill all the blanks.");
             }
            
+        }
+
+        private void txtChoose_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OFD = new OpenFileDialog();
+
+            if (OFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.txtPath.Text = OFD.FileName;
+            }
+            try
+            {
+                //string PathConn = "Provider=Microsoft.Jet.OLEB.4.0;Data Source= " + txtPath.Text + ";Extended Properties=\"Excel 8.0;HDR=Yes;\";";
+                if (txtPath.Text == "")
+                {
+                    MessageBox.Show("Must fill all the blanks.");
+                }
+                else
+                {
+                    string PathConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= " + txtPath.Text + ";Extended Properties='Excel 12.0 Xml;HDR=YES';";
+                    OleDbConnection conn = new OleDbConnection(PathConn);
+                    //OleDbDataAdapter myOledbDataAdapter = new OleDbDataAdapter("Select * from [" + txtLoadFile.Text + "$]", conn);
+                    OleDbDataAdapter myOledbDataAdapter = new OleDbDataAdapter("Select * from [Sheet1$]", conn);
+                    dataTable = new DataTable();
+                    myOledbDataAdapter.Fill(dataTable);
+                    dg_excelImport.DataSource = dataTable;
+                    txtSaveExcelPath.Enabled = true;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Failed to Load: " + ex); }
+        }
+
+        private void txtSaveExcelPath_Click(object sender, EventArgs e)
+        {
+            try {
+
+                if (txtDocument_id.Text == "" || txtPath.Text == "")
+                {
+                    MessageBox.Show("Please fill the blanks.");
+                }
+                else
+                {
+                    string StrQuery;
+                    for (int i = 0; i <= Convert.ToInt32(dg_excelImport.Rows.Count) - 1; i++)
+                    {
+                        if (dg_excelImport.Rows[i].Cells["Area No"].Value.ToString() != "")
+                        {
+                            StrQuery = @"INSERT INTO area_table (area_no,area_desc,doc_id) VALUES ('"
+                            + dg_excelImport.Rows[i].Cells["Area No"].Value.ToString().Replace("'", "''") + "','"
+                            + dg_excelImport.Rows[i].Cells["Description"].Value.ToString().Replace("'", "''") + "','"
+                            + txtDocument_id.Text + "');";
+
+                            dbCommand("", "importArea", StrQuery);
+
+                        }
+
+
+                    } // end for
+                    MessageBox.Show("Successfully imported!");
+                    dbCommandLogs(Session.FullName.ToString() +" successfully imported an excel file.");
+
+
+                    txtPath.Text = "";
+                    txtDocument_id.Text = "";
+
+                    dg_excelImport.DataSource = null;
+                    dg_excelImport.Rows.Clear();
+                    dg_excelImport.Refresh();
+                }
+
+            } catch (Exception ex) {
+
+                MessageBox.Show("Failed to import.");
+
+            }
+            
         }
 
         //private void dg_accounts_SelectionChanged(object sender, EventArgs e)

@@ -39,6 +39,7 @@ namespace WindowsFormsApp1
         {
             db.dbCommand("","addDocu","insert into area_table(area_no,area_desc,doc_id) values ('"+cmb_areaNo.Text+"','"+txt_descDocu.Text+"','"+ document.Id.ToString() +"')");
             db.dbCommand("", "getArea", "select area_id as 'Area ID', area_no as 'Area No' ,area_desc as 'Area Description' from area_table where doc_id ='" + document.Id.ToString() + "'");
+            db.dbCommandLogs(Session.FullName.ToString() + " successfully added new area. ");
             this.Hide();
         }
 
@@ -107,6 +108,7 @@ namespace WindowsFormsApp1
         private void btn_deleteArea_Click(object sender, EventArgs e)
         {
             db.dbCommand("","deleteArea","delete from area_table where area_id ='"+area.Id.ToString()+"'");
+            db.dbCommandLogs(Session.FullName.ToString() + " successfully deleted an area no.");
             this.Hide();
         }
 
@@ -118,6 +120,7 @@ namespace WindowsFormsApp1
         private void txtEditArea_Click(object sender, EventArgs e)
         {
             db.dbCommand("", "updateArea", "update area_table set area_no = '"+ cmb_areaNo.Text +"', area_desc = '"+ txt_descDocu.Text +"' where area_id ='" + area.Id.ToString() + "'");
+            db.dbCommandLogs(Session.FullName.ToString() + " successfully updated an area no.");
             this.Hide();
         }
     }

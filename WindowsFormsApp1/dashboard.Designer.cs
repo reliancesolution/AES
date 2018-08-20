@@ -64,6 +64,13 @@
             this.btn_logRefresh = new System.Windows.Forms.Button();
             this.dt_logs = new System.Windows.Forms.DataGridView();
             this.tb_reportGeneration = new System.Windows.Forms.TabPage();
+            this.txtPath = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtChoose = new System.Windows.Forms.Button();
+            this.txtSaveExcelPath = new System.Windows.Forms.Button();
+            this.dg_excelImport = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtDocument_id = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tb_admin.SuspendLayout();
             this.tb_manageAccount.SuspendLayout();
@@ -72,6 +79,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dt_docu)).BeginInit();
             this.tb_userLogs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_logs)).BeginInit();
+            this.tb_reportGeneration.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_excelImport)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_logout
@@ -462,12 +471,83 @@
             // 
             // tb_reportGeneration
             // 
+            this.tb_reportGeneration.Controls.Add(this.label7);
+            this.tb_reportGeneration.Controls.Add(this.txtDocument_id);
+            this.tb_reportGeneration.Controls.Add(this.dg_excelImport);
+            this.tb_reportGeneration.Controls.Add(this.txtSaveExcelPath);
+            this.tb_reportGeneration.Controls.Add(this.txtChoose);
+            this.tb_reportGeneration.Controls.Add(this.label6);
+            this.tb_reportGeneration.Controls.Add(this.txtPath);
             this.tb_reportGeneration.Location = new System.Drawing.Point(4, 22);
             this.tb_reportGeneration.Name = "tb_reportGeneration";
             this.tb_reportGeneration.Size = new System.Drawing.Size(940, 379);
             this.tb_reportGeneration.TabIndex = 3;
             this.tb_reportGeneration.Text = "Report Generation";
             this.tb_reportGeneration.UseVisualStyleBackColor = true;
+            // 
+            // txtPath
+            // 
+            this.txtPath.Location = new System.Drawing.Point(52, 17);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Size = new System.Drawing.Size(240, 20);
+            this.txtPath.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "PATH";
+            // 
+            // txtChoose
+            // 
+            this.txtChoose.Location = new System.Drawing.Point(298, 15);
+            this.txtChoose.Name = "txtChoose";
+            this.txtChoose.Size = new System.Drawing.Size(75, 23);
+            this.txtChoose.TabIndex = 2;
+            this.txtChoose.Text = "Choose";
+            this.txtChoose.UseVisualStyleBackColor = true;
+            this.txtChoose.Click += new System.EventHandler(this.txtChoose_Click);
+            // 
+            // txtSaveExcelPath
+            // 
+            this.txtSaveExcelPath.Location = new System.Drawing.Point(379, 15);
+            this.txtSaveExcelPath.Name = "txtSaveExcelPath";
+            this.txtSaveExcelPath.Size = new System.Drawing.Size(75, 23);
+            this.txtSaveExcelPath.TabIndex = 3;
+            this.txtSaveExcelPath.Text = "Save";
+            this.txtSaveExcelPath.UseVisualStyleBackColor = true;
+            this.txtSaveExcelPath.Click += new System.EventHandler(this.txtSaveExcelPath_Click);
+            // 
+            // dg_excelImport
+            // 
+            this.dg_excelImport.AllowUserToAddRows = false;
+            this.dg_excelImport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_excelImport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_excelImport.Location = new System.Drawing.Point(13, 87);
+            this.dg_excelImport.Name = "dg_excelImport";
+            this.dg_excelImport.ReadOnly = true;
+            this.dg_excelImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_excelImport.Size = new System.Drawing.Size(441, 289);
+            this.dg_excelImport.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 46);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Type Document Id :";
+            // 
+            // txtDocument_id
+            // 
+            this.txtDocument_id.Location = new System.Drawing.Point(115, 43);
+            this.txtDocument_id.Name = "txtDocument_id";
+            this.txtDocument_id.Size = new System.Drawing.Size(177, 20);
+            this.txtDocument_id.TabIndex = 5;
             // 
             // frm_dashboard
             // 
@@ -491,6 +571,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dt_docu)).EndInit();
             this.tb_userLogs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dt_logs)).EndInit();
+            this.tb_reportGeneration.ResumeLayout(false);
+            this.tb_reportGeneration.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_excelImport)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -532,5 +615,12 @@
         private System.Windows.Forms.Button btnCreateDocu;
         private System.Windows.Forms.TextBox txt_titleDocu;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView dg_excelImport;
+        private System.Windows.Forms.Button txtSaveExcelPath;
+        private System.Windows.Forms.Button txtChoose;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtPath;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtDocument_id;
     }
 }
