@@ -20,6 +20,8 @@ namespace WindowsFormsApp1
         private DataTable dataTable = new DataTable();
         private MySqlConnection conn = null;
 
+        Guest_frm showGuest;
+
         public Form1()
         {
             InitializeComponent();
@@ -166,6 +168,14 @@ namespace WindowsFormsApp1
 
 
             
+        }
+
+        private void btnGoToGuest_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            showGuest = new Guest_frm();
+
+            showGuest.Show();
         }
     }
 }

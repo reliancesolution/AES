@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnGoToGuest = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +84,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnGoToGuest);
             this.groupBox1.Controls.Add(this.txt_username);
             this.groupBox1.Controls.Add(this.txt_password);
             this.groupBox1.Controls.Add(this.label1);
@@ -106,6 +108,16 @@
             this.label3.Size = new System.Drawing.Size(752, 56);
             this.label3.TabIndex = 5;
             this.label3.Text = "ACCREDITATION EXPERT SYSTEM ";
+            // 
+            // btnGoToGuest
+            // 
+            this.btnGoToGuest.Location = new System.Drawing.Point(133, 164);
+            this.btnGoToGuest.Name = "btnGoToGuest";
+            this.btnGoToGuest.Size = new System.Drawing.Size(244, 23);
+            this.btnGoToGuest.TabIndex = 4;
+            this.btnGoToGuest.Text = "GUEST";
+            this.btnGoToGuest.UseVisualStyleBackColor = true;
+            this.btnGoToGuest.Click += new System.EventHandler(this.btnGoToGuest_Click);
             // 
             // Form1
             // 
@@ -133,6 +145,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnGoToGuest;
     }
 }
 

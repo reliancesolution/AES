@@ -25,6 +25,8 @@ namespace WindowsFormsApp1
 
         docuForm df;
 
+        Guest_frm gf;
+
 
         string userId;
        
@@ -84,7 +86,7 @@ namespace WindowsFormsApp1
                     adapt = new MySqlDataAdapter(query);
                     dataTable = new DataTable();
                     adapt.Fill(dataTable);
-
+                   
                     if (dataTable.Rows[0][0].ToString() == "0")
                     {
                         query = conn.CreateCommand();
@@ -161,7 +163,28 @@ namespace WindowsFormsApp1
                     setData = new DataSet();
                     adapt.Fill(setData);
                     dt_docu.DataSource = setData.Tables[0].DefaultView;
+                }
+                else if (module == "" && specialAction == "showDocuGuest")
+                {
+                    adapt = new MySqlDataAdapter(query);
+                    setData = new DataSet();
+                    
+                    adapt.Fill(setData);
+                    gf = new Guest_frm();
+                    gf.docuFormGuest(setData.Tables[0].DefaultView);
+
+
+                   
+
                 }                
+                else if (module == "" && specialAction == "searchDocuGuest")
+                {
+                    adapt = new MySqlDataAdapter(query);
+                    setData = new DataSet();
+                    adapt.Fill(setData);
+                    gf = new Guest_frm();
+                    gf.loadGuestBySearch(setData.Tables[0].DefaultView);
+                }
                 else if (module == "" && specialAction == "createDocuTitle")
                 {
                     query.ExecuteNonQuery();
@@ -226,6 +249,23 @@ namespace WindowsFormsApp1
                 else if (module == "" && specialAction == "importArea")
                 {
                     query.ExecuteNonQuery();
+                }                
+                else if (module == "" && specialAction == "searchDocuByTitle")
+                {
+                    adapt = new MySqlDataAdapter(query);
+                    setData = new DataSet();
+                    adapt.Fill(setData);
+                    dt_docu.DataSource = setData.Tables[0].DefaultView;
+                }
+                else if (module == "" && specialAction == "searchDocuGuest")
+                {
+                    adapt = new MySqlDataAdapter(query);
+                    setData = new DataSet();
+                    adapt.Fill(setData);
+                    gf = new Guest_frm();
+                    gf.loadGuestBySearch(setData.Tables[0].DefaultView);
+
+                    //dt_docu.DataSource = setData.Tables[0].DefaultView;
                 }
             }
             catch (Exception ex)
@@ -534,6 +574,11 @@ namespace WindowsFormsApp1
 
             }
             
+        }
+
+        private void btn_searchDocu_Click(object sender, EventArgs e)
+        {
+            dbCommand("","searchDocuByTitle", "select id as 'ID', title as 'Title' from document_table where title Like '%" + txt_searchDocu.Text +"%'");
         }
 
         //private void dg_accounts_SelectionChanged(object sender, EventArgs e)

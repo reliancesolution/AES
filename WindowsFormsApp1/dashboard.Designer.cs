@@ -64,13 +64,13 @@
             this.btn_logRefresh = new System.Windows.Forms.Button();
             this.dt_logs = new System.Windows.Forms.DataGridView();
             this.tb_reportGeneration = new System.Windows.Forms.TabPage();
-            this.txtPath = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtChoose = new System.Windows.Forms.Button();
-            this.txtSaveExcelPath = new System.Windows.Forms.Button();
-            this.dg_excelImport = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.txtDocument_id = new System.Windows.Forms.TextBox();
+            this.dg_excelImport = new System.Windows.Forms.DataGridView();
+            this.txtSaveExcelPath = new System.Windows.Forms.Button();
+            this.txtChoose = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtPath = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tb_admin.SuspendLayout();
             this.tb_manageAccount.SuspendLayout();
@@ -399,6 +399,7 @@
             this.btn_searchDocu.TabIndex = 10;
             this.btn_searchDocu.Text = "SEARCH";
             this.btn_searchDocu.UseVisualStyleBackColor = true;
+            this.btn_searchDocu.Click += new System.EventHandler(this.btn_searchDocu_Click);
             // 
             // txt_searchDocu
             // 
@@ -485,54 +486,6 @@
             this.tb_reportGeneration.Text = "Report Generation";
             this.tb_reportGeneration.UseVisualStyleBackColor = true;
             // 
-            // txtPath
-            // 
-            this.txtPath.Location = new System.Drawing.Point(52, 17);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(240, 20);
-            this.txtPath.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 20);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "PATH";
-            // 
-            // txtChoose
-            // 
-            this.txtChoose.Location = new System.Drawing.Point(298, 15);
-            this.txtChoose.Name = "txtChoose";
-            this.txtChoose.Size = new System.Drawing.Size(75, 23);
-            this.txtChoose.TabIndex = 2;
-            this.txtChoose.Text = "Choose";
-            this.txtChoose.UseVisualStyleBackColor = true;
-            this.txtChoose.Click += new System.EventHandler(this.txtChoose_Click);
-            // 
-            // txtSaveExcelPath
-            // 
-            this.txtSaveExcelPath.Location = new System.Drawing.Point(379, 15);
-            this.txtSaveExcelPath.Name = "txtSaveExcelPath";
-            this.txtSaveExcelPath.Size = new System.Drawing.Size(75, 23);
-            this.txtSaveExcelPath.TabIndex = 3;
-            this.txtSaveExcelPath.Text = "Save";
-            this.txtSaveExcelPath.UseVisualStyleBackColor = true;
-            this.txtSaveExcelPath.Click += new System.EventHandler(this.txtSaveExcelPath_Click);
-            // 
-            // dg_excelImport
-            // 
-            this.dg_excelImport.AllowUserToAddRows = false;
-            this.dg_excelImport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dg_excelImport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_excelImport.Location = new System.Drawing.Point(13, 87);
-            this.dg_excelImport.Name = "dg_excelImport";
-            this.dg_excelImport.ReadOnly = true;
-            this.dg_excelImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dg_excelImport.Size = new System.Drawing.Size(441, 289);
-            this.dg_excelImport.TabIndex = 4;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -548,6 +501,54 @@
             this.txtDocument_id.Name = "txtDocument_id";
             this.txtDocument_id.Size = new System.Drawing.Size(177, 20);
             this.txtDocument_id.TabIndex = 5;
+            // 
+            // dg_excelImport
+            // 
+            this.dg_excelImport.AllowUserToAddRows = false;
+            this.dg_excelImport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_excelImport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_excelImport.Location = new System.Drawing.Point(13, 87);
+            this.dg_excelImport.Name = "dg_excelImport";
+            this.dg_excelImport.ReadOnly = true;
+            this.dg_excelImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_excelImport.Size = new System.Drawing.Size(441, 289);
+            this.dg_excelImport.TabIndex = 4;
+            // 
+            // txtSaveExcelPath
+            // 
+            this.txtSaveExcelPath.Location = new System.Drawing.Point(379, 15);
+            this.txtSaveExcelPath.Name = "txtSaveExcelPath";
+            this.txtSaveExcelPath.Size = new System.Drawing.Size(75, 23);
+            this.txtSaveExcelPath.TabIndex = 3;
+            this.txtSaveExcelPath.Text = "Save";
+            this.txtSaveExcelPath.UseVisualStyleBackColor = true;
+            this.txtSaveExcelPath.Click += new System.EventHandler(this.txtSaveExcelPath_Click);
+            // 
+            // txtChoose
+            // 
+            this.txtChoose.Location = new System.Drawing.Point(298, 15);
+            this.txtChoose.Name = "txtChoose";
+            this.txtChoose.Size = new System.Drawing.Size(75, 23);
+            this.txtChoose.TabIndex = 2;
+            this.txtChoose.Text = "Choose";
+            this.txtChoose.UseVisualStyleBackColor = true;
+            this.txtChoose.Click += new System.EventHandler(this.txtChoose_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "PATH";
+            // 
+            // txtPath
+            // 
+            this.txtPath.Location = new System.Drawing.Point(52, 17);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Size = new System.Drawing.Size(240, 20);
+            this.txtPath.TabIndex = 0;
             // 
             // frm_dashboard
             // 
