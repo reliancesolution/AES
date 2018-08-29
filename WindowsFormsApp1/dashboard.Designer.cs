@@ -71,6 +71,7 @@
             this.txtChoose = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPath = new System.Windows.Forms.TextBox();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tb_admin.SuspendLayout();
             this.tb_manageAccount.SuspendLayout();
@@ -312,6 +313,7 @@
             // 
             // tb_manageDocuments
             // 
+            this.tb_manageDocuments.Controls.Add(this.btnPrint);
             this.tb_manageDocuments.Controls.Add(this.txt_titleDocu);
             this.tb_manageDocuments.Controls.Add(this.label8);
             this.tb_manageDocuments.Controls.Add(this.btnCreateDocu);
@@ -489,7 +491,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 46);
+            this.label7.Location = new System.Drawing.Point(275, 37);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(101, 13);
             this.label7.TabIndex = 6;
@@ -497,7 +499,7 @@
             // 
             // txtDocument_id
             // 
-            this.txtDocument_id.Location = new System.Drawing.Point(115, 43);
+            this.txtDocument_id.Location = new System.Drawing.Point(380, 34);
             this.txtDocument_id.Name = "txtDocument_id";
             this.txtDocument_id.Size = new System.Drawing.Size(177, 20);
             this.txtDocument_id.TabIndex = 5;
@@ -507,7 +509,7 @@
             this.dg_excelImport.AllowUserToAddRows = false;
             this.dg_excelImport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dg_excelImport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_excelImport.Location = new System.Drawing.Point(13, 87);
+            this.dg_excelImport.Location = new System.Drawing.Point(278, 78);
             this.dg_excelImport.Name = "dg_excelImport";
             this.dg_excelImport.ReadOnly = true;
             this.dg_excelImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -516,7 +518,7 @@
             // 
             // txtSaveExcelPath
             // 
-            this.txtSaveExcelPath.Location = new System.Drawing.Point(379, 15);
+            this.txtSaveExcelPath.Location = new System.Drawing.Point(644, 6);
             this.txtSaveExcelPath.Name = "txtSaveExcelPath";
             this.txtSaveExcelPath.Size = new System.Drawing.Size(75, 23);
             this.txtSaveExcelPath.TabIndex = 3;
@@ -526,7 +528,7 @@
             // 
             // txtChoose
             // 
-            this.txtChoose.Location = new System.Drawing.Point(298, 15);
+            this.txtChoose.Location = new System.Drawing.Point(563, 6);
             this.txtChoose.Name = "txtChoose";
             this.txtChoose.Size = new System.Drawing.Size(75, 23);
             this.txtChoose.TabIndex = 2;
@@ -537,7 +539,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 20);
+            this.label6.Location = new System.Drawing.Point(275, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 1;
@@ -545,10 +547,21 @@
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(52, 17);
+            this.txtPath.Location = new System.Drawing.Point(317, 8);
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(240, 20);
             this.txtPath.TabIndex = 0;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(656, 230);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(180, 24);
+            this.btnPrint.TabIndex = 18;
+            this.btnPrint.Text = "PRINT";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // frm_dashboard
             // 
@@ -623,5 +636,6 @@
         private System.Windows.Forms.TextBox txtPath;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDocument_id;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

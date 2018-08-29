@@ -123,5 +123,22 @@ namespace WindowsFormsApp1
             db.dbCommandLogs(Session.FullName.ToString() + " successfully updated an area no.");
             this.Hide();
         }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bmp1 = Properties.Resources.export;
+            Image newImage1 = bmp1;
+            e.Graphics.DrawImage(newImage1, 25, 200, 800, 800);
+            //e.Graphics.DrawImage(newImage, 25, 25, 600, 600);
+            e.Graphics.DrawString(area.area_no.ToString(), new Font("Calibre", 12, FontStyle.Bold), Brushes.Black, new Point(400, 100));
+            e.Graphics.DrawString(area.area_descs.ToString(), new Font("Calibre", 12, FontStyle.Bold), Brushes.Black, new Point(100, 200));
+            e.Graphics.DrawString(txt_titleDocu.Text, new Font("Calibre", 10, FontStyle.Bold), Brushes.Black, new Point(250, 1000));
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+        }
     }
 }

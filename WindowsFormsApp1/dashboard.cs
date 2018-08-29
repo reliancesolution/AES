@@ -525,6 +525,7 @@ namespace WindowsFormsApp1
                     myOledbDataAdapter.Fill(dataTable);
                     dg_excelImport.DataSource = dataTable;
                     txtSaveExcelPath.Enabled = true;
+                    MessageBox.Show("Success Importing");
                 }
             }
             catch (Exception ex) { MessageBox.Show("Failed to Load: " + ex); }
@@ -580,6 +581,43 @@ namespace WindowsFormsApp1
         {
             dbCommand("","searchDocuByTitle", "select id as 'ID', title as 'Title' from document_table where title Like '%" + txt_searchDocu.Text +"%'");
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (txt_titleDocu.Text != "")
+            {
+                foreach (DataGridViewRow row in dt_docu.SelectedRows)
+                {
+                    int docId;
+                    docId = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    document.Id = docId;
+                    document.Title = row.Cells[1].Value.ToString();
+
+                    //if (regType == "admin")
+                    //{
+                    // cmb_regType.SelectedIndex = 0;
+                    //}
+                    //else if (regType == "coordinator")
+                    //{
+                    //    cmb_regType.SelectedIndex = 1;
+                    //}
+
+                }
+                dbCommand("", "showArea", "select area_id as 'Area ID', area_no as 'Area No' ,area_desc as 'Area Description' from area_table where doc_id ='" + document.Id.ToString() + "'");
+                txt_titleDocu.Text = "";
+
+
+            }
+            else
+            {
+                MessageBox.Show("Fill all the blanks.");
+            }
+
+            //printPreviewDialog1.Document = printDocument1;
+            //printPreviewDialog1.ShowDialog();
+        }
+
+        
 
         //private void dg_accounts_SelectionChanged(object sender, EventArgs e)
         //{

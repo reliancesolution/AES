@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(docuForm));
             this.txt_titleDocu = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btn_addDocu = new System.Windows.Forms.Button();
@@ -38,6 +39,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cmb_areaNo = new System.Windows.Forms.ComboBox();
             this.dg_area = new System.Windows.Forms.DataGridView();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dg_area)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +97,7 @@
             // 
             // txt_descDocu
             // 
-            this.txt_descDocu.Location = new System.Drawing.Point(650, 114);
+            this.txt_descDocu.Location = new System.Drawing.Point(650, 135);
             this.txt_descDocu.Multiline = true;
             this.txt_descDocu.Name = "txt_descDocu";
             this.txt_descDocu.Size = new System.Drawing.Size(338, 241);
@@ -102,7 +106,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(562, 117);
+            this.label7.Location = new System.Drawing.Point(562, 138);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 13);
             this.label7.TabIndex = 20;
@@ -152,11 +156,37 @@
             this.dg_area.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_area_CellContentClick);
             this.dg_area.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dg_area_CellMouseClick);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(808, 105);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(180, 24);
+            this.btnPrint.TabIndex = 29;
+            this.btnPrint.Text = "PRINT";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // docuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1033, 450);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dg_area);
             this.Controls.Add(this.txt_titleDocu);
             this.Controls.Add(this.label8);
@@ -188,5 +218,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmb_areaNo;
         private System.Windows.Forms.DataGridView dg_area;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
