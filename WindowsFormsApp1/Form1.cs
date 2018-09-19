@@ -103,7 +103,20 @@ namespace WindowsFormsApp1
                     else if (dataTable.Rows[0][0].ToString() == "coordinator")
                     {
                         //create session
-                        MessageBox.Show("coordinator");
+                        query.CommandText = "select * from account_table where username= '" + username + "' and password='" + password + "'";
+                        adapt = new MySqlDataAdapter(query);
+                        dataTable = new DataTable();
+                        adapt.Fill(dataTable);
+
+                        Session.Id = Convert.ToInt32(dataTable.Rows[0][0].ToString());
+                        Session.Username = dataTable.Rows[0][1].ToString();
+                        Session.FullName = dataTable.Rows[0][2].ToString();
+                        Session.Type = dataTable.Rows[0][3].ToString();
+
+                        this.Hide();
+
+                        frm_dashboard showDashboard = new frm_dashboard();
+                        showDashboard.Show();
                     }
 
                 }

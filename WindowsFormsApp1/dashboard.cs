@@ -340,6 +340,14 @@ namespace WindowsFormsApp1
             btn_regUserSave.Visible = false;
             txtSaveExcelPath.Enabled = false;
 
+
+            if (Session.Type.ToString() == "coordinator") {
+
+                tb_manageAccount.Enabled = false;
+                tb_userLogs.Enabled = false;
+            }
+
+            
         }
 
         private void btn_regEdit_Click(object sender, EventArgs e)
