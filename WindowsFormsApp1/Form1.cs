@@ -97,6 +97,7 @@ namespace WindowsFormsApp1
                         this.Hide();
                         
                         frm_dashboard showDashboard = new frm_dashboard();
+                        showDashboard.dbCommandLogs(Session.FullName.ToString() + " logged in. ");
                         showDashboard.Show();
                         
                     }
@@ -116,6 +117,7 @@ namespace WindowsFormsApp1
                         this.Hide();
 
                         frm_dashboard showDashboard = new frm_dashboard();
+                        showDashboard.dbCommandLogs(Session.FullName.ToString() + " logged in. ");
                         showDashboard.Show();
                     }
 

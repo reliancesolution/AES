@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             dbCommand("", "viewUser", "");
-            dbCommand("", "showLogs", "select username as 'Username', full_name as 'Full Name', description as 'Description' from log_table");
+            dbCommand("", "showLogs", "select username as 'Username', full_name as 'Full Name', description as 'Description', DateAndTime as 'Date and Time' from log_table");
             dbCommand("", "showDocu", "select id as 'ID', title as 'Title' from document_table");
         }
         private void clearRegTextBox() {
@@ -54,7 +54,7 @@ namespace WindowsFormsApp1
                 conn = new MySqlConnection(cs);
                 conn.Open();
                 query = conn.CreateCommand();
-                query.CommandText = "insert into log_table(username,full_name,description) values ('"+ Session.Username.ToString() +"','"+ Session.FullName.ToString() + "','"+ message +"')";
+                query.CommandText = "insert into log_table(username,full_name,description,DateAndTime) values ('"+ Session.Username.ToString() +"','"+ Session.FullName.ToString() + "','"+ message +"','"+ DateTime.Now.ToString() + "')";
                 query.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -287,6 +287,8 @@ namespace WindowsFormsApp1
             this.Hide();
 
             Form1 showLogin = new Form1();
+            frm_dashboard showDashboard = new frm_dashboard();
+            showDashboard.dbCommandLogs(Session.FullName.ToString() + " signed out. ");
             showLogin.Show();
         }
 
@@ -411,7 +413,7 @@ namespace WindowsFormsApp1
 
         private void btn_logRefresh_Click(object sender, EventArgs e)
         {
-            dbCommand("", "showLogs", "select username as 'Username', full_name as 'Full Name', description as 'Description' from log_table");
+            dbCommand("", "showLogs", "select username as 'Username', full_name as 'Full Name', description as 'Description', DateAndTime as 'Date and Time' from log_table");
         }
 
         private void btn_refreshDocu_Click(object sender, EventArgs e)
